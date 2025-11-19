@@ -1,18 +1,12 @@
-11:58:46.694 [main] INFO  FirstAutoTest - Драйвер запущен для браузера: CHROME
-11:58:47.026 [main] INFO  FirstAutoTest - Переход на страницу: https://otus.home.kartushin.su/form.html
-11:58:47.789 [main] INFO  FirstAutoTest - Assert пройден: все поля формы содержат введенные данные
-11:58:47.836 [main] INFO  FirstAutoTest - Assert пройден: пароль и подтверждение пароля совпадают
-11:58:47.965 [main] INFO  FirstAutoTest - Assert пройден: блок содержит данные
-11:58:48.088 [main] INFO  FirstAutoTest - Assert пройден: данные отображаются корректно
-11:59:14.081 [main] INFO  FirstAutoTest - Драйвер запущен для браузера: FIREFOX
-11:59:15.188 [main] INFO  FirstAutoTest - Переход на страницу: https://otus.home.kartushin.su/form.html
-11:59:15.762 [main] INFO  FirstAutoTest - Assert пройден: все поля формы содержат введенные данные
-11:59:15.797 [main] INFO  FirstAutoTest - Assert пройден: пароль и подтверждение пароля совпадают
-11:59:15.933 [main] INFO  FirstAutoTest - Assert пройден: блок содержит данные
-11:59:16.027 [main] INFO  FirstAutoTest - Assert пройден: данные отображаются корректно
-11:59:33.537 [main] INFO  FirstAutoTest - Драйвер запущен для браузера: EDGE
-11:59:33.898 [main] INFO  FirstAutoTest - Переход на страницу: https://otus.home.kartushin.su/form.html
-11:59:34.822 [main] INFO  FirstAutoTest - Assert пройден: все поля формы содержат введенные данные
-11:59:34.871 [main] INFO  FirstAutoTest - Assert пройден: пароль и подтверждение пароля совпадают
-11:59:35.010 [main] INFO  FirstAutoTest - Assert пройден: блок содержит данные
-11:59:35.137 [main] INFO  FirstAutoTest - Assert пройден: данные отображаются корректно
+05:50:44.857 [main] INFO  FirstAutoTest - Драйвер запущен для браузера: EDGE
+05:50:45.266 [main] INFO  FirstAutoTest - Переход на страницу: https://otus.home.kartushin.su/form.html
+05:50:46.176 [main] INFO  FirstAutoTest - Assert пройден: все поля формы содержат введенные данные
+05:50:46.224 [main] INFO  FirstAutoTest - Assert пройден: пароль и подтверждение пароля совпадают
+05:50:46.356 [main] INFO  FirstAutoTest - Assert пройден: блок содержит данные
+05:50:46.492 [main] INFO  FirstAutoTest - Assert пройден: данные отображаются корректно
+05:51:04.861 [main] INFO  FirstAutoTest - Драйвер запущен для браузера: CHROME
+05:51:05.121 [main] INFO  FirstAutoTest - Переход на страницу: https://otus.home.kartushin.su/form.html
+05:51:05.916 [main] INFO  FirstAutoTest - Assert пройден: все поля формы содержат введенные данные
+05:51:05.956 [main] INFO  FirstAutoTest - Assert пройден: пароль и подтверждение пароля совпадают
+05:51:06.085 [main] INFO  FirstAutoTest - Assert пройден: блок содержит данные
+05:51:06.215 [main] INFO  FirstAutoTest - Assert пройден: данные отображаются корректно
