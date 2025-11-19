@@ -1,18 +1,16 @@
-package factory.options;
+package factory.settings;
 
 import org.openqa.selenium.MutableCapabilities;
 
-public interface IBrowserOptions {
+public interface IBrowserSettings {
   
   MutableCapabilities applyBrowserOptions();
   
   default MutableCapabilities getOptions(MutableCapabilities customOptions) {
     MutableCapabilities browserOptions = applyBrowserOptions();
     
-    if (customOptions != null) {
-      browserOptions.merge(customOptions);
-    }
-    
-    return browserOptions;
+    return (customOptions != null)
+        ? browserOptions.merge(customOptions)
+        : browserOptions;
   }
 }

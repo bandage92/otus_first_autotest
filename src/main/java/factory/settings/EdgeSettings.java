@@ -1,9 +1,12 @@
-package factory.options;
+package factory.settings;
 
-public class EdgeOptions implements IBrowserOptions {
+import org.openqa.selenium.MutableCapabilities;
+import org.openqa.selenium.edge.EdgeOptions;
+
+public class EdgeSettings implements IBrowserSettings {
   
   @Override
-  public IBrowserOptions applyBrowserOptions() {
-    return new org.openqa.selenium.edge.EdgeOptions();
+  public MutableCapabilities applyBrowserOptions() {
+    return new EdgeOptions();
   }
 }

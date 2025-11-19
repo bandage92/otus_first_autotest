@@ -1,9 +1,12 @@
-package factory.options;
+package factory.settings;
 
-public class ChromeOptions implements IBrowserOptions {
+import org.openqa.selenium.MutableCapabilities;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+public class ChromeSettings implements IBrowserSettings {
   
   @Override
-  public IBrowserOptions applyBrowserOptions() {
-    return new org.openqa.selenium.chrome.ChromeOptions();
+  public MutableCapabilities applyBrowserOptions() {
+    return new ChromeOptions();
   }
 }

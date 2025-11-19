@@ -45,7 +45,22 @@ public class FirstAutoTest {
             .inputTextIntoConfirmPasswordField(ConfigReader.getPassword())
             .inputTextIntoBirthdateField(ConfigReader.getBirthdate())
             .selectLanguageLevel();
-    LOGGER.info("Все поля формы успешно заполнены");
+    
+    assertAll("Проверка заполнения полей формы",
+        () -> assertTrue(formPage.getUsernameValue().contains(ConfigReader.getUsername()),
+            "Поле 'Имя пользователя' должно содержать введенное значение"),
+        () -> assertTrue(formPage.getEmailValue().contains(ConfigReader.getEmail()),
+            "Поле 'Электронная почта' должно содержать введенное значение"),
+        () -> assertTrue(formPage.getPasswordValue().contains(ConfigReader.getPassword()),
+            "Поле 'Пароль' должно содержать введенное значение"),
+        () -> assertTrue(formPage.getConfirmPasswordValue().contains(ConfigReader.getPassword()),
+            "Поле 'Подтвердите пароль' должно содержать введенное значение"),
+        () -> assertFalse(formPage.getBirthdateValue().isEmpty(),
+            "Поле 'Дата рождения' не должно быть пустым"),
+        () -> assertNotNull(formPage.getLanguageLevelValue(),
+            "Поле 'Уровень знания языка' должно быть выбрано")
+    );
+    LOGGER.info("Assert пройден: все поля формы содержат введенные данные");
     
     assertEquals(formPage.getPasswordValue(), formPage.getConfirmPasswordValue(),
         "Пароль и подтверждение пароля должны совпадать");
@@ -55,6 +70,7 @@ public class FirstAutoTest {
     
     String outputText = formPage.getOutputText();
     assertFalse(outputText.isEmpty(), "Блок содержит данные");
+    LOGGER.info("Assert пройден: блок содержит данные");
     
     assertAll("Проверка вывода данных",
         () -> assertTrue(outputText.contains("Имя пользователя: " + formPage.getUsernameValue())),
@@ -62,6 +78,6 @@ public class FirstAutoTest {
         () -> assertTrue(outputText.contains("Дата рождения: " + formPage.getBirthdateValue())),
         () -> assertTrue(outputText.contains("Уровень языка: " + formPage.getLanguageLevelValue()))
     );
-    LOGGER.info("Данные отображаются корректно");
+    LOGGER.info("Assert пройден: данные отображаются корректно");
   }
 }

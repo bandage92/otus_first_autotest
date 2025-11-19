@@ -27,7 +27,7 @@ public class FormPage {
     this.browserType = GetBrowserType.getBrowserType();
   }
   
-  // General methods
+  // Template methods
   private void inputText(By locator, String text) {
     WebElement element = ElementWaits.presenceOfElement(driver, locator);
     element.sendKeys(text);
