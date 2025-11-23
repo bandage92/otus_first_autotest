@@ -1,9 +1,11 @@
-package factory.options;
+package factory.settings;
 
-public class FirefoxOptions implements IBrowserOptions {
+import org.openqa.selenium.firefox.FirefoxOptions;
+
+public class FirefoxSettings implements IBrowserSettings<FirefoxOptions> {
   
   @Override
-  public IBrowserOptions applyBrowserOptions() {
-    return new ChromeOptions();
+  public FirefoxOptions getSettings() {
+    return new FirefoxOptions();
   }
 }

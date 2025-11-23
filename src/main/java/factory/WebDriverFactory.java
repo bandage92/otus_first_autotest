@@ -1,11 +1,11 @@
 package factory;
 
-import data.EBrowserTypeData;
-import factory.options.ChromeSettings;
-import factory.options.EdgeSettings;
-import factory.options.FirefoxSettings;
+import exceptions.BrowserNotFoundException;
+import factory.settings.ChromeSettings;
+import factory.settings.EdgeSettings;
+import factory.settings.FirefoxSettings;
+import factory.settings.IBrowserSettings;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -16,28 +16,49 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class WebDriverFactory {
   
-  public static WebDriver create(EBrowserTypeData browserType, MutableCapabilities options) {
-    return createDriver(browserType, options);
-  }
+  private final String browser = System.getProperty("browser");
+  private final String noOptions = System.getProperty("noOptions");
   
-  public static WebDriver create(EBrowserTypeData browserType) {
-    return create(browserType, null);
-  }
-  
-  private static WebDriver createDriver(EBrowserTypeData browserType, MutableCapabilities options) {
-    return switch (browserType) {
-      case CHROME -> {
+  public WebDriver create() {
+    switch (browser) {
+      
+      // Google Chrome
+      case "chrome": {
         WebDriverManager.chromedriver().setup();
-        yield new ChromeDriver((ChromeOptions) new ChromeSettings().getOptions(options));
+        
+        if (!Boolean.parseBoolean(noOptions)) {
+          IBrowserSettings<ChromeOptions> chromeOptions = new ChromeSettings();
+          return new ChromeDriver((chromeOptions.getSettings()));
+        }
+        
+        return new ChromeDriver();
       }
-      case FIREFOX -> {
+      
+      // Firefox
+      case "firefox": {
         WebDriverManager.firefoxdriver().setup();
-        yield new FirefoxDriver((FirefoxOptions) new FirefoxSettings().getOptions(options));
+        
+        if (!Boolean.parseBoolean(noOptions)) {
+          IBrowserSettings<FirefoxOptions> firefoxOptions = new FirefoxSettings();
+          return new FirefoxDriver(firefoxOptions.getSettings());
+        }
+        
+        return new FirefoxDriver();
       }
-      case EDGE -> {
+      
+      // MS EDGE
+      case "edge": {
         WebDriverManager.edgedriver().setup();
-        yield new EdgeDriver((EdgeOptions) new EdgeSettings().getOptions(options));
+        
+        if (!Boolean.parseBoolean(noOptions)) {
+          IBrowserSettings<EdgeOptions> edgeOptions = new EdgeSettings();
+          return new EdgeDriver(edgeOptions.getSettings());
+        }
+        
+        return new EdgeDriver();
       }
-    };
+    }
+    
+    throw new BrowserNotFoundException(browser);
   }
 }

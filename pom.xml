@@ -16,12 +16,15 @@
     <selenium.version>4.23.0</selenium.version>
     <junit.jupiter.version>5.10.2</junit.jupiter.version>
     <wdm.version>6.3.2</wdm.version>
+    <assertj.core.version>3.27.6</assertj.core.version>
+    <faker.version>1.0.2</faker.version>
     <log4j.core.version>2.24.3</log4j.core.version>
     <log4j.api.version>2.24.3</log4j.api.version>
 
+    <maven.surefire.version>3.2.5</maven.surefire.version>
+    <maven.compiler.version>3.14.1</maven.compiler.version>
     <maven.checkstyle.version>3.6.0</maven.checkstyle.version>
     <maven.spotbugs.version>4.9.3.0</maven.spotbugs.version>
-    <maven.surefire.version>3.2.5</maven.surefire.version>
   </properties>
 
   <dependencies>
@@ -45,6 +48,20 @@
       <groupId>io.github.bonigarcia</groupId>
       <artifactId>webdrivermanager</artifactId>
       <version>${wdm.version}</version>
+    </dependency>
+
+    <!-- AssertJ Core -->
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>${assertj.core.version}</version>
+    </dependency>
+
+    <!-- Java Faker -->
+    <dependency>
+      <groupId>com.github.javafaker</groupId>
+      <artifactId>javafaker</artifactId>
+      <version>${faker.version}</version>
     </dependency>
 
     <!-- Log4j2 Core -->
@@ -73,6 +90,21 @@
         <version>${maven.surefire.version}</version>
         <configuration>
           <argLine>-Dfile.encoding=UTF-8</argLine>
+          <systemPropertyVariables>
+            <browser>chrome</browser>
+            <base.url>https://otus.home.kartushin.su</base.url>
+          </systemPropertyVariables>
+        </configuration>
+      </plugin>
+
+      <!-- Maven Compiler Plugin-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven.compiler.version}</version>
+        <configuration>
+          <target>${maven.compiler.target}</target>
+          <source>${maven.compiler.source}</source>
         </configuration>
       </plugin>
 

@@ -1,18 +1,8 @@
-package factory.options;
+package factory.settings;
 
-import org.openqa.selenium.MutableCapabilities;
+import org.openqa.selenium.remote.AbstractDriverOptions;
 
-public interface IBrowserOptions {
+public interface IBrowserSettings<T extends AbstractDriverOptions<?>> {
   
-  MutableCapabilities applyBrowserOptions();
-  
-  default MutableCapabilities getOptions(MutableCapabilities customOptions) {
-    MutableCapabilities browserOptions = applyBrowserOptions();
-    
-    if (customOptions != null) {
-      browserOptions.merge(customOptions);
-    }
-    
-    return browserOptions;
-  }
+  T getSettings();
 }

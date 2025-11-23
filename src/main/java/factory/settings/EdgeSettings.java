@@ -1,9 +1,11 @@
-package factory.options;
+package factory.settings;
 
-public class EdgeOptions implements IBrowserOptions {
+import org.openqa.selenium.edge.EdgeOptions;
+
+public class EdgeSettings implements IBrowserSettings<EdgeOptions> {
   
   @Override
-  public IBrowserOptions applyBrowserOptions() {
-    return new org.openqa.selenium.edge.EdgeOptions();
+  public EdgeOptions getSettings() {
+    return new EdgeOptions();
   }
 }
