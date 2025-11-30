@@ -1,0 +1,8 @@
+03:57:48.026 [main] INFO  FormPageTest - Драйвер запущен для браузера: chrome
+03:58:17.574 [main] INFO  pages.FormPage - Assert пройден: все поля формы содержат введенные данные
+03:58:18.447 [main] INFO  pages.FormPage - Assert пройден: пароль и подтверждение пароля совпадают
+03:58:21.323 [main] INFO  pages.FormPage - Assert пройден: данные отображаются корректно
+04:02:20.958 [main] INFO  FormPageTest - Драйвер запущен для браузера: firefox
+04:02:31.074 [main] INFO  pages.FormPage - Assert пройден: все поля формы содержат введенные данные
+04:02:31.904 [main] INFO  pages.FormPage - Assert пройден: пароль и подтверждение пароля совпадают
+04:02:34.521 [main] INFO  pages.FormPage - Assert пройден: данные отображаются корректно

@@ -1,5 +1,8 @@
 package factory;
 
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.util.HashMap;
 import exceptions.BrowserNotFoundException;
 import factory.settings.ChromeSettings;
 import factory.settings.EdgeSettings;
@@ -13,14 +16,28 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class WebDriverFactory {
   
-  private final String browser = System.getProperty("browser");
+  private final String browserName = System.getProperty("browserName", "chrome");
+  private final String browserVersion = System.getProperty("browserVersion", "128.0");
+  private final String remoteDriverURL = System.getProperty("remote.url", "");
   private final String noOptions = System.getProperty("noOptions");
   
-  public WebDriver create() {
-    switch (browser) {
+  public WebDriver create() throws MalformedURLException {
+    if (!remoteDriverURL.isEmpty()) {
+      DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+      desiredCapabilities.setCapability("browserVersion", browserVersion);
+      desiredCapabilities.setCapability("browserName", browserName);
+      desiredCapabilities.setCapability("selenoid:options", new HashMap<String, Object>() {{
+          put("enableVNC", true);
+          }});
+      return new RemoteWebDriver(URI.create(remoteDriverURL).toURL(), desiredCapabilities);
+    }
+    
+    switch (browserName) {
       
       // Google Chrome
       case "chrome": {
@@ -59,6 +76,6 @@ public class WebDriverFactory {
       }
     }
     
-    throw new BrowserNotFoundException(browser);
+    throw new BrowserNotFoundException(browserName);
   }
 }

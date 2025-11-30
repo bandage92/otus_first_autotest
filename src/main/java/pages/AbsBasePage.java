@@ -30,7 +30,7 @@ public abstract class AbsBasePage {
   // Метод для инициализации браузера
   private EBrowserTypeData initializeBrowserType() {
     try {
-      String browser = System.getProperty("browser", "chrome");
+      String browser = System.getProperty("browserName", "chrome");
       return EBrowserTypeData.valueOf(browser.toUpperCase());
     } catch (Exception e) {
       return EBrowserTypeData.CHROME;

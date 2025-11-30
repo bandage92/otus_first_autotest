@@ -1,6 +1,7 @@
 import static org.apache.logging.log4j.LogManager.*;
 import static utils.DataGenerator.*;
 
+import java.net.MalformedURLException;
 import dto.User;
 import factory.WebDriverFactory;
 import org.apache.logging.log4j.Logger;
@@ -17,9 +18,9 @@ public class FormPageTest {
   private WebDriver driver;
   
   @BeforeEach
-  public void startDriver() {
+  public void startDriver() throws MalformedURLException {
     driver = new WebDriverFactory().create();
-    String browserName = System.getProperty("browser");
+    String browserName = System.getProperty("browserName");
     LOGGER.info("Драйвер запущен для браузера: {}", browserName);
   }
   
