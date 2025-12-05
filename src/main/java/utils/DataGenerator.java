@@ -32,6 +32,6 @@ public class DataGenerator {
         .toInstant()
         .atZone(systemDefault())
         .toLocalDate()
-        .format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        .format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
   }
 }

@@ -1,16 +1,18 @@
 package utils;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 public class DateConverter {
   
-  // Конвертер формата даты: "dd.MM.yyyy" в "yyyy-MM-dd"
+  // Конвертер формата даты: "dd/MM/yyyy" в "yyyy-MM-dd"
   public static String convertDateToOutputFormat(String date) {
-    if (date == null || date.trim().isEmpty()) {
-      throw new IllegalArgumentException("Дата не может быть пустой");
+    try {
+      LocalDate localDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+      return localDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+    } catch (DateTimeParseException e) {
+      throw new IllegalArgumentException("Неверный формат даты для Firefox: " + date, e);
     }
-    
-    String[] p = date.split("\\.");
-    if (p.length != 3) throw new IllegalArgumentException("Неверный формат: " + date);
-    
-    return p[2] + "-" + p[1] + "-" + p[0];
   }
 }
